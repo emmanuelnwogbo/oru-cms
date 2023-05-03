@@ -1,0 +1,11 @@
+@function scaleValue($value) {
+    @return calc(
+      #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width))
+    );
+}
+  
+$white: #fff;
+$blue-white: rgba(240, 248, 255, 1);
+$font-color: #333333;
+$primary-color: rgba(103, 58, 183, 1);
+$white2: rgba(248, 248, 248, 1);

@@ -1,0 +1,242 @@
+<template>
+    <div class="dashboardheader">
+        <div class="dashboardheader__top flex-area">
+            <div class="dashboardheader__toparea flex-area">
+                <div class="dashboardheader__logo">
+                    <span>CRM</span>
+                </div>
+
+                <div class="dashboardheader__left flex-area margin-bottom-header">
+                    <div class="dashboardheader__leftitem">
+                        <span class="svg">
+                            <svg>
+                                <use xlink:href="@/assets/imgs/sprites.svg#icon-users"></use>
+                            </svg>
+                        </span>
+                        <p class="label">Clients</p>
+                    </div>
+                    <div class="dashboardheader__leftitem">
+                        <span class="svg">
+                            <svg>
+                                <use xlink:href="@/assets/imgs/sprites.svg#icon-activity"></use>
+                            </svg>
+                        </span>
+                        <p class="label">Activities</p>
+                    </div>
+                    <div class="dashboardheader__leftitem">
+                        <span class="svg">
+                            <svg>
+                                <use xlink:href="@/assets/imgs/sprites.svg#icon-bar-chart"></use>
+                            </svg>
+                        </span>
+                        <p class="label">Reports</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboardheader__right dashboardheader__toparea flex-area margin-bottom-header">
+                <div class="dashboardheader__right--svg">
+                    <span class="svg"></span>
+                </div>
+                <div class="dashboardheader__right--svg">
+                    <span class="svg">
+                        <svg>
+                            <use xlink:href="@/assets/imgs/sprites.svg#icon-bell"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="dashboardheader__name">
+                    <div class="dashboardheader__right--svg">
+                        <span class="svg">
+                            
+                        </span>
+                    </div>
+                    <p class="name">Chris Nevis</p>
+                    <div class="dashboardheader__right--svg">
+                        <span class="svg">
+                            <svg>
+                                <use xlink:href="@/assets/imgs/sprites.svg#icon-cheveron-down"></use>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboardheader__middle flex-area margin-bottom-header">
+            <div class="dashboardheader__clientsnum">
+                <p>Clients: 2699 items</p>
+            </div>
+        </div>
+
+        <div class="dashboardheader__bottom flex-area margin-bottom-header">
+            <div class="dashboardheader__bottomarea">
+                <span class="btn">All</span>
+                <span class="btn">Accounts</span>
+                <span class="btn">Leads</span>
+                <span class="btn">Uk reassigns</span>
+                <span class="btn">Reassigns</span>
+                <span class="btn">Ryan Filter</span>
+            </div>
+        </div>
+
+        <div class="dashboardheader__inputarea">
+            <div class="dashboardheader__search">
+                <span class="svg">
+                    <svg>
+                        <use xlink:href="@/assets/imgs/sprites.svg#icon-search1"></use>
+                    </svg>
+                </span>
+                <input placeholder="Search"/>
+            </div>
+            <div class="dashboardheader__searchtoggle">
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.dashboardheader {
+    position: relative;
+    color: $white;
+    background: $primary-color;
+    z-index: 2;
+    height: #{scaleValue(170)};
+
+    &__logo {
+        font-size: #{scaleValue(25)};
+        margin-right: #{scaleValue(50)};
+    }
+
+    &__left {
+        margin: 0 #{scaleValue(50)};
+    }
+
+    &__leftitem {
+        font-size: #{scaleValue(15)};
+        margin: 0 #{scaleValue(20)};
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        & p {
+
+            &.label {
+                margin: #{scaleValue(5)};
+            }
+        }
+    }
+
+    &__top {
+        justify-content: space-between;
+        font-size: #{scaleValue(14)};
+    }
+
+    &__name {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-left: #{scaleValue(20)};
+
+        & p {
+
+            &.name {
+                display: inline-block;
+                margin: 0 #{scaleValue(10)};
+            }
+        }
+    }
+
+    &__middle {
+        font-size: #{scaleValue(12)};
+    }
+
+    &__bottomarea {
+        position: relative;
+        background: $white;
+        color: $font-color;
+        padding: #{scaleValue(10)};
+        width: 100%;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: #{scaleValue(12)};
+        height: #{scaleValue(40)};
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: rgba($primary-color, .1);
+            z-index: 1;
+        }
+
+        & span {
+
+            &.btn {
+                cursor: pointer;
+                text-transform: uppercase;
+                display: inline-block;
+                margin-right:  #{scaleValue(30)};
+                opacity: .6;
+                position: relative;
+                z-index: 2;
+            }
+        }
+
+        & span {
+
+        }
+    }
+
+    &__inputarea {
+        display: flex;
+    }
+
+    &__search {
+        background: rgba(0, 0, 0, .5);
+        padding: #{scaleValue(5)} #{scaleValue(15)};
+        display: flex;
+        height: #{scaleValue(42)};
+
+        & span {
+
+            &.svg {
+                display: flex;
+                height: 100%;
+                align-items: center;
+
+                & svg {
+                    height: #{scaleValue(17)};
+                    width: #{scaleValue(17)};
+                    fill: $white;
+                }
+            }
+        }
+
+        & input {
+            display: inline-block;
+            border: none;
+            outline: none;
+            height: 100%;
+            width: #{scaleValue(500)};
+            background: none;
+            color: $white;
+            padding-left: #{scaleValue(5)};
+
+            font-size: #{scaleValue(14)};
+
+            &::placeholder {
+                color: $white;
+                opacity: .9;
+                font-size: #{scaleValue(14)};
+            }
+        }
+    }
+}
+</style>
