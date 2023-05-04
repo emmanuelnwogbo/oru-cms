@@ -1,5 +1,9 @@
 <template>
     <div class="dashboardheader">
+
+        <UploadCsv v-if="upload_popup" :open_csvupload="open_csvupload"/>
+
+
         <div class="dashboardheader__top flex-area">
             <div class="dashboardheader__toparea flex-area">
                 <div class="dashboardheader__logo">
@@ -26,10 +30,26 @@
                     <div class="dashboardheader__leftitem">
                         <span class="svg">
                             <svg>
+                                <use xlink:href="@/assets/imgs/sprites.svg#icon-arrow_drop_down"></use>
+                            </svg>
+                        </span>
+                        <p class="label">Actions</p>
+                    </div>
+                    <div class="dashboardheader__leftitem">
+                        <span class="svg">
+                            <svg>
                                 <use xlink:href="@/assets/imgs/sprites.svg#icon-bar-chart"></use>
                             </svg>
                         </span>
                         <p class="label">Reports</p>
+                    </div>
+                    <div class="dashboardheader__leftitem" @click="open_csvupload">
+                        <span class="svg">
+                            <svg>
+                                <use xlink:href="@/assets/imgs/sprites.svg#icon-open_in_browser"></use>
+                            </svg>
+                        </span>
+                        <p class="label">Upload Csv/Excel</p>
                     </div>
                 </div>
             </div>
@@ -72,8 +92,8 @@
         <div class="dashboardheader__bottom flex-area margin-bottom-header">
             <div class="dashboardheader__bottomarea">
                 <span class="btn">All</span>
-                <span class="btn">Accounts</span>
                 <span class="btn">Leads</span>
+                <span class="btn">Contact</span>
                 <span class="btn">Uk reassigns</span>
                 <span class="btn">Reassigns</span>
                 <span class="btn">Ryan Filter</span>
@@ -96,13 +116,29 @@
     </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            upload_popup: true
+        }
+    },
+    methods: {
+        open_csvupload(event) {
+            event.stopPropagation()
+            this.upload_popup ? this.upload_popup = false : this.upload_popup = true;
+        }
+    }
+}
+</script>
+
 <style lang="scss" scoped>
 .dashboardheader {
     position: relative;
     color: $white;
     background: $primary-color;
     z-index: 2;
-    height: #{scaleValue(170)};
+    height: #{scaleValue(190)};
 
     &__logo {
         font-size: #{scaleValue(25)};
@@ -204,6 +240,9 @@
         display: flex;
         height: #{scaleValue(42)};
 
+        border-radius: #{scaleValue(10)};
+        margin-top: #{scaleValue(10)};
+
         & span {
 
             &.svg {
@@ -212,8 +251,8 @@
                 align-items: center;
 
                 & svg {
-                    height: #{scaleValue(17)};
-                    width: #{scaleValue(17)};
+                    height: #{scaleValue(13)};
+                    width: #{scaleValue(13)};
                     fill: $white;
                 }
             }
@@ -227,7 +266,7 @@
             width: #{scaleValue(500)};
             background: none;
             color: $white;
-            padding-left: #{scaleValue(5)};
+            padding-left: #{scaleValue(8)};
 
             font-size: #{scaleValue(14)};
 

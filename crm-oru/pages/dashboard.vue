@@ -2,14 +2,45 @@
     <div class="dashboard container">
         <DashboardHeader />
       <div class="dashboard__list">
-        <div class="dashboard__listitem dashboard__listheader" :style="grid_style">
-            <div class="dashboard__listitem--section" v-for="(item, index) in header">{{ item }}</div>
+        <div class="dashboard__listitem dashboard__listheader" :style="header_grid_style">
+            <div class="dashboard__listitem--section dashboard__listheader--section align-text-to-right" v-for="(item, index) in header">{{ item }}</div>
         </div>
 
         <div class="dashboard__listitem" :style="grid_style" v-for="(client_item, index) in clients">
-            <div class="dashboard__listitem--section borderless"></div>
-            <div class="dashboard__listitem--section borderless" v-for="(ci, index) in render_client(client_item)">{{ ci }}</div>
-            <div class="dashboard__listitem--section borderless"></div>
+            <div class="dashboard__listitem--section borderless icons">
+                <div class="dashboard__listitem--checkbox">
+                    <input type="checkbox"/>
+                </div>
+                <div class="dashboard__listitem--svg">
+                    <span class="svg">
+                        <svg>
+                            <use xlink:href="@/assets/imgs/sprites.svg#icon-star-full"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="dashboard__listitem--svg">
+                    <span class="svg">
+                        <svg>
+                            <use xlink:href="@/assets/imgs/sprites.svg#icon-phone1"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="dashboard__listitem--svg">
+                    <span class="svg">
+                        <svg>
+                            <use xlink:href="@/assets/imgs/sprites.svg#icon-edit-pencil"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="dashboard__listitem--svg">
+                    <span class="svg">
+                        <svg>
+                            <use xlink:href="@/assets/imgs/sprites.svg#icon-ellipsis-h"></use>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="dashboard__listitem--section borderless align-text-to-right" v-for="(ci, index) in render_client(client_item)">{{ ci }}</div>
         </div>
       </div>
     </div>
@@ -39,7 +70,7 @@
     computed: {
         header() {
             return [
-                'btnsa',
+                '',
                 'Item Id',
                 'Type',
                 'First Name',
@@ -47,11 +78,7 @@
                 'Country',
                 'Status',
                 'Created Date',
-                'Owner',
-                'IsOnline',
-                'Last Login',
-                'Assigned Date',
-                'btnsb'
+                'Assigned Date'
             ]
         },
         clients() {
@@ -64,9 +91,6 @@
                     Country: "Canada",
                     Status: "Status",
                     created: "5/1/2023",
-                    owner: "Mike Dameo",
-                    is_online: "",
-                    last_login: "",
                     assigned_date: "5/1/2023"
                 },
                 {
@@ -77,9 +101,6 @@
                     Country: "Canada",
                     Status: "Status",
                     created: "5/1/2023",
-                    owner: "Mike Dameo",
-                    is_online: "",
-                    last_login: "",
                     assigned_date: "5/1/2023"
                 },
                 {
@@ -90,9 +111,6 @@
                     Country: "Canada",
                     Status: "Status",
                     created: "5/1/2023",
-                    owner: "Mike Dameo",
-                    is_online: "",
-                    last_login: "",
                     assigned_date: "5/1/2023"
                 },
                 {
@@ -103,9 +121,6 @@
                     Country: "Canada",
                     Status: "Status",
                     created: "5/1/2023",
-                    owner: "Mike Dameo",
-                    is_online: "",
-                    last_login: "",
                     assigned_date: "5/1/2023"
                 },
                 {
@@ -116,9 +131,6 @@
                     Country: "Canada",
                     Status: "Status",
                     created: "5/1/2023",
-                    owner: "Mike Dameo",
-                    is_online: "",
-                    last_login: "",
                     assigned_date: "5/1/2023"
                 }
             ]
@@ -127,6 +139,12 @@
             return this.header.length;
         },
         grid_style() {
+            return {
+                display: 'grid',
+                gridTemplateColumns: `repeat(${this.grid_number}, 1fr)`,
+            }
+        },
+        header_grid_style() {
             return {
                 display: 'grid',
                 gridTemplateColumns: `repeat(${this.grid_number}, 1fr)`,
@@ -146,7 +164,7 @@
         top: 0;
         left: 0;
         width: 100vw;
-        height: #{scaleValue(210)};
+        height: #{scaleValue(230)};
         background: $primary-color;
         z-index: 1;
     }
@@ -159,11 +177,8 @@
     }
     
     &__listitem {
-        display: grid;
         grid-gap:  0;
-        align-items: center;
         padding: #{scaleValue(16)} #{scaleValue(10)};
-        width: #{scaleValue(1600)};
         font-size: #{scaleValue(13)};
         font-weight: 500;
 
@@ -172,26 +187,56 @@
         }
 
         &--section {
-            text-align: right;
-            border-right: 1px solid $font-color;
+            border-right: 1px solid rgba($font-color, .2);
             padding-right: #{scaleValue(10)};
             text-transform: capitalize;
 
-            &.borderless {
-                border: none;
+            &.icons {
+                display: flex;
             }
 
             &:last-child {
                 border: none
             }
         }
+
+        &--checkbox {
+            display: flex;
+            align-items: center;
+            margin-right: #{scaleValue(16)};
+            cursor: pointer;
+        }
+
+        &--svg {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: #{scaleValue(16)};
+
+            & svg {
+                fill: rgba($dark-graphite, .5);
+                height: #{scaleValue(13)};
+                width: #{scaleValue(13)};
+                display: inline-block;
+                transform: translateY(#{scaleValue(.5)});
+            }
+
+            &.clicked {
+                color: $metallic-gold;
+            }
+        }
     }
 
     &__listheader {
-        background: rgba($blue-white, .6);
+        background: rgba(74, 78, 77, .1) !important;
         font-weight: 600;
-        font-size: #{scaleValue(12)};
-        padding: #{scaleValue(12)} #{scaleValue(10)};
+        font-size: #{scaleValue(10.5)};
+        padding: #{scaleValue(18)} #{scaleValue(10)};
+
+        &--section {
+            text-transform: uppercase;
+            opacity: .8;
+        }
     }
 }
 </style>

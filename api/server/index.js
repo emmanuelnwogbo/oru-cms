@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 import contactsRoutes from './routes/contacts';
 import authentication from "./routes/authentication";
 import leads from './routes/leads';
+import uploadRoutes from './routes/uploadFiles';
 
 const app = express();
 
@@ -50,6 +51,10 @@ const {
   putLead
 } = leads;
 
+const {
+  uploadcsv
+} = uploadRoutes
+
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
@@ -70,6 +75,7 @@ app.use(putContact);
 app.use(deleteContact);
 app.use(postLead);
 app.use(putLead);
+app.use(uploadcsv);
 
 mongoose.connect(process.env.DB, {
     useNewUrlParser: true, 

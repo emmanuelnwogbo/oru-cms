@@ -9,7 +9,12 @@ const contactSchema = new mongoose.Schema({
   jobTitle: { type: String },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
-  customFields: { type: Map, of: String }
+  customFields: { type: Map, of: String },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
 });
 
 
