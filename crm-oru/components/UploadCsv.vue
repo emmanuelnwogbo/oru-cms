@@ -20,14 +20,19 @@
 </template>
 
 <script>
+import urlMixin from '@/mixins/url.js';
+
 export default {
     props: ['open_csvupload'],
+    mixins: [urlMixin],
     methods: {
         open_csv(event) {
             event.stopPropagation()
             return ''
         },
         handleFileUpload(event) {
+            const { base_url } = this;
+
             const fileList = event.target.files;
             const formData = new FormData();
 
@@ -35,7 +40,7 @@ export default {
                 formData.append('files[]', fileList[i]);
             }
 
-            fetch('http://localhost:8080/upload/csv', {
+            fetch(`${base_url}/upload/csv`, {
                 method: 'POST',
                 body: formData
             })
@@ -58,13 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 .uploadcsv {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background: rgba(0, 0, 0, .3);
-    z-index: 3;
+    @include full-screen-overlay;
 
     &__body {
         margin: 0 auto;

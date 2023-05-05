@@ -120,7 +120,7 @@
 export default {
     data() {
         return {
-            upload_popup: true
+            upload_popup: false
         }
     },
     methods: {

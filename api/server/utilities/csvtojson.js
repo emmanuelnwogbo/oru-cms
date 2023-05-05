@@ -3,8 +3,6 @@ const csvtojson = async (fileContent) => {
   const headers = content[0].split(",");
   const result = [];
 
-  console.log(content.length, content, 'hello there');
-
   for (let i = 1; i < content.length - 1; i++) {
     let obj = {}
 
@@ -37,11 +35,11 @@ const csvtojson = async (fileContent) => {
       }
     }
 
-    console.log(`obj: ${JSON.stringify(obj)}`);
+    //console.log(`obj: ${JSON.stringify(obj)}`);
     result.push(obj);
   }
 
-  console.log(`result: ${JSON.stringify(result)}`);
+  //console.log(`result: ${JSON.stringify(result)}`);
   return result;
 }
 

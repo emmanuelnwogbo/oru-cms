@@ -8,7 +8,7 @@ const login = router;
 
 login.post('/login', async (req, res) => {
     try {
-        const user = await User.findOne({ username: req.body.username });
+        const user = await User.findOne({ username: req.body.user_name });
 
         if (!user) {
             return res.status(401).json({ message: 'Invalid username or password' });
@@ -26,7 +26,7 @@ login.post('/login', async (req, res) => {
             role: user.role 
         }, process.env.secretKey);
 
-        res.json({ token });
+        res.json({ token, user });
 
     } catch(error) {
         res.status(500).json({ message: err.message });

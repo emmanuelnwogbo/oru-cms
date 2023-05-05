@@ -24,3 +24,10 @@ uploadcsv.post('/upload/csv', upload.array('files[]'), (req, res) => {
             res.status(500).send('Error uploading files to S3');
         });
 });
+
+/*const customFields = {};
+                        
+
+                        const newItemFromCsv = new CsvData({
+
+                        });*/

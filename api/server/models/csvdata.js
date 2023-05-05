@@ -5,6 +5,14 @@ const csvdataSchema = new mongoose.Schema({
         type: Map,
         of: mongoose.Schema.Types.Mixed
     },
+    fileName: {
+        type: String,
+        required: true
+    },
+    status: {
+      type: String,
+      default: 'New'
+    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
