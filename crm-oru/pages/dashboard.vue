@@ -156,22 +156,10 @@
 
 <style lang="scss" scoped>
 .dashboard {
-    position: relative;
-
-    &::after {
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: #{scaleValue(230)};
-        background: $primary-color;
-        z-index: 1;
-    }
+    @include container;
 
     &__list {
-        background: $white;
-        min-height: #{scaleValue(850)};
+        @include content;
         overflow-x: scroll;
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
     }

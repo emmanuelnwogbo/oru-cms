@@ -18,7 +18,7 @@ signup.post('/users', async (req, res) => {
         });
 
         await user.save(); 
-        const token = jwt.sign({ username: user.username, email: user.email, role: user.role }, process.env.secretKey);
+        const token = jwt.sign({ user_id: user._id, username: user.username, email: user.email, role: user.role }, process.env.secretKey);
 
         res.json({ token, user });
     } catch(error) {

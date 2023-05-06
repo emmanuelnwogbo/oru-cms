@@ -24,3 +24,51 @@
     }
   }
 }
+
+@mixin container {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: #{scaleValue(230)};
+        background: $primary-color;
+        z-index: 1;
+    }
+}
+
+@mixin content {
+    background: $white;
+    min-height: #{scaleValue(850)};
+}
+
+@mixin input-style {
+  width: $area-width;
+  height:  #{scaleValue(45)};
+  border: 1px solid rgba($primary-color, .2);
+  border-radius:  #{scaleValue(15)};
+  padding: 0 #{scaleValue(15)};
+  font-size: #{scaleValue(15)};
+  outline: none;
+  margin-bottom: #{scaleValue(26)};
+}
+
+@mixin input-label-style {
+  font-size: #{scaleValue(13)};
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: #{scaleValue(13)};
+}
+
+@mixin h1 {
+  font-weight: 400;
+  font-size: #{scaleValue(30)};
+  margin-bottom: #{scaleValue(6)};
+}
+
+@mixin h2 {
+
+}

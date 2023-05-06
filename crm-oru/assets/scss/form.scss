@@ -1,4 +1,4 @@
-$area-width: #{scaleValue(600)};
+//$area-width: #{scaleValue(600)};
 
 .form {
 
@@ -10,13 +10,8 @@ $area-width: #{scaleValue(600)};
 }
 
 .formInputField {
-    width: $area-width;
-    height:  #{scaleValue(45)};
-    overflow: hidden;
-    border: 1px solid rgba($primary-color, .2);
-    border-radius:  #{scaleValue(15)};
-    padding: 0 #{scaleValue(15)};
-    margin-bottom: #{scaleValue(26)};
+    @include input-style;
+    //margin-bottom: #{scaleValue(26)};
     position: relative;
 
     &.error {
@@ -37,10 +32,7 @@ $area-width: #{scaleValue(600)};
 }
 
 .formInputLabel {
-    font-size: #{scaleValue(13)};
-    font-weight: 400;
-    display: inline-block;
-    margin-bottom: #{scaleValue(13)};
+    @include input-label-style;
 }
 
 .formInputIcon {

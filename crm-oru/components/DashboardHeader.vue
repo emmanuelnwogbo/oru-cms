@@ -6,7 +6,7 @@
 
         <div class="dashboardheader__top flex-area">
             <div class="dashboardheader__toparea flex-area">
-                <div class="dashboardheader__logo">
+                <div class="dashboardheader__logo" @click="routeTo('/dashboard')">
                     <span>CRM</span>
                 </div>
 
@@ -19,7 +19,7 @@
                         </span>
                         <p class="label">Clients</p>
                     </div>
-                    <div class="dashboardheader__leftitem">
+                    <div class="dashboardheader__leftitem" @click="routeTo('/activities')">
                         <span class="svg">
                             <svg>
                                 <use xlink:href="@/assets/imgs/sprites.svg#icon-activity"></use>
@@ -117,6 +117,8 @@
 </template>
 
 <script>
+import urlMixin from '@/mixins/url.js';
+
 export default {
     data() {
         return {
@@ -128,7 +130,8 @@ export default {
             event.stopPropagation()
             this.upload_popup ? this.upload_popup = false : this.upload_popup = true;
         }
-    }
+    },
+    mixins: [urlMixin]
 }
 </script>
 
@@ -143,6 +146,7 @@ export default {
     &__logo {
         font-size: #{scaleValue(25)};
         margin-right: #{scaleValue(50)};
+        cursor: pointer;
     }
 
     &__left {

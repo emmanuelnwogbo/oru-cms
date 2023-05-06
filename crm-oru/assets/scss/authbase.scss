@@ -20,9 +20,7 @@
       width: #{scaleValue(900)};
   
       & h1 {
-        font-weight: 400;
-        font-size: #{scaleValue(30)};
-        margin-bottom: #{scaleValue(6)};
+        @include h1;
       }
   
       & h2 {

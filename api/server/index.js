@@ -17,11 +17,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.use(cors({
-    origin: '*', // use your actual domain name (or localhost), using * is not recommended
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept'],
-}))
+app.use(cors()); // add this line
 
 app.use(express.urlencoded({
   extended: false
